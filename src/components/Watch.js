@@ -18,7 +18,7 @@ function Watch(props) {
 
 		const seconds = currentDate.getSeconds();
 		const minutes = currentDate.getMinutes();
-		const hours = currentDate.getUTCHours() + timeZone;
+		const hours = +currentDate.getUTCHours() + +timeZone;
 
 		return window.Promise.resolve({
 			seconds: Math.floor(seconds * 6 - 90),
@@ -38,10 +38,9 @@ function Watch(props) {
 						minutes: data.minutes,
 						hours: data.hours,
 						exists: true
-					})
-					console.log(new Date().getSeconds())
-					draw(time, watch)
-					setUpdated(data.currentDate)
+					});
+					draw(time, watch);
+					setUpdated(data.currentDate);
 				})
 		}, 490);
 	} // запрашиваем данные с сервера и вызываем изменение компонента

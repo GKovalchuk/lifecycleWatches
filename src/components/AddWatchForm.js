@@ -19,7 +19,7 @@ function AddWatchForm(props) {
 			city: form.city,
 			timeZone: form.timeZone,
 			id: nanoid()
-		})
+		});
 		setForm({
 			city: '',
 			timeZone: 0

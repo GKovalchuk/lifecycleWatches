@@ -12,7 +12,7 @@ function App() {
 	}]);
 
 	function addWatch(newWatch) {
-		setWatches(prevState => ([...prevState, newWatch]))
+		setWatches(prevState => ([...prevState, newWatch]));
 	}
 	function removeWatch(removedItem) {
 		setWatches(prevState => prevState.filter(item => (item.id !== removedItem)));
