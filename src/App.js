@@ -12,12 +12,15 @@ function App() {
 	function addWatch(newWatch) {
 		setWatches(prevState => ([...prevState, newWatch]))
 	}
+	function removeWatch(removedItem) {
+		setWatches(prevState => prevState.filter(item => (item !== removedItem)))
+	}
 
 
 	return (
 		<div className="App">
 			<AddWatchForm addWatch={addWatch} />
-			<Watches watches={watches} />
+			<Watches watches={watches} removeWatch={removeWatch} />
 		</div>
 	);
 }

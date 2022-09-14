@@ -7,7 +7,8 @@ function Watch(props) {
 	const [time, setTime] = useState({
 		seconds: 0,
 		minutes: 0,
-		hours: 0
+		hours: 0,
+		exists: false
 	});
 	const [updated, setUpdated] = useState();
 	let timeout; //первоначальное состояние до получения данных с сервера
@@ -35,7 +36,8 @@ function Watch(props) {
 					setTime({
 						seconds: data.seconds,
 						minutes: data.minutes,
-						hours: data.hours
+						hours: data.hours,
+						exists: true
 					})
 					draw(time, watch)
 					setUpdated(data.currentDate)
@@ -43,12 +45,25 @@ function Watch(props) {
 		}, 1000);
 	} // запрашиваем данные с сервера и вызываем изменение компонента
 
+
+
 	useEffect(() => {
 		loadData();
 	}, []); //component did mount
 
 	useEffect(() => {
-		timeout = setTimeout(loadData, 1000)
+		if (time.exists === true) {
+			console.log(time.exists)
+			timeout = setTimeout(loadData, 1000);
+		} else {
+			console.log(time.exists)
+			return () => {
+				clearTimeout(timeout);
+			}
+		}
+
+
+
 	}, [updated]);  //component did update
 
 
@@ -58,13 +73,17 @@ function Watch(props) {
 		watch.querySelector('.hour_hand').style.transform = `rotate(${time.hours}deg)`;
 	} // функция, рисующая изменения
 
-
+	const removeWatch = () => {
+		setTime({ exists: false });
+		console.log('remove')
+		return props.removeWatch({ city: city, timeZone: timeZone })
+	} // функция, удаляющая компонент
 
 	return (
 		<div className='watch_item' >
 			<p className='city_name'>{city}</p>
 			<div className='watch_wrapper'>
-				<button type='remove' className='remove_watch'>
+				<button type='submit' onSubmit={removeWatch} className='remove_watch'>
 					<img src="../assets/close_button.png" alt="X" />
 				</button>
 				<div className='bezel' id={watchId}>
