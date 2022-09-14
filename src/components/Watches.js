@@ -7,7 +7,7 @@ function Watches(props) {
 
 	return (
 		<div className='block_of_watches'>
-			{arrOfWatches.map(watchItem => <Watch key={nanoid()} watchId={nanoid()} city={watchItem.city} timeZone={watchItem.timeZone} removeWatch={props.removeWatch} />)}
+			{arrOfWatches.map(watchItem => <Watch key={nanoid()} watchId={watchItem.id} city={watchItem.city} timeZone={watchItem.timeZone} removeWatch={props.removeWatch} />)}
 		</div>
 	)
 }

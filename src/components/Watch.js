@@ -39,10 +39,11 @@ function Watch(props) {
 						hours: data.hours,
 						exists: true
 					})
+					console.log(new Date().getSeconds())
 					draw(time, watch)
 					setUpdated(data.currentDate)
 				})
-		}, 1000);
+		}, 500);
 	} // запрашиваем данные с сервера и вызываем изменение компонента
 
 
@@ -53,7 +54,6 @@ function Watch(props) {
 
 	useEffect(() => {
 		if (time.exists === true) {
-			console.log(time.exists)
 			timeout = setTimeout(loadData, 1000);
 		} else {
 			console.log(time.exists)
@@ -61,9 +61,6 @@ function Watch(props) {
 				clearTimeout(timeout);
 			}
 		}
-
-
-
 	}, [updated]);  //component did update
 
 
@@ -75,15 +72,14 @@ function Watch(props) {
 
 	const removeWatch = () => {
 		setTime({ exists: false });
-		console.log('remove')
-		return props.removeWatch({ city: city, timeZone: timeZone })
+		return props.removeWatch(watchId);
 	} // функция, удаляющая компонент
 
 	return (
 		<div className='watch_item' >
 			<p className='city_name'>{city}</p>
 			<div className='watch_wrapper'>
-				<button type='submit' onSubmit={removeWatch} className='remove_watch'>
+				<button type='button' onClick={removeWatch} className='remove_watch'>
 					<img src="../assets/close_button.png" alt="X" />
 				</button>
 				<div className='bezel' id={watchId}>

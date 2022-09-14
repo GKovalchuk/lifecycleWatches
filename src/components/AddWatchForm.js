@@ -1,5 +1,6 @@
 import '../assets/css/AddWatchForm.css'
 import React, { useState } from 'react';
+import { nanoid } from 'nanoid';
 
 function AddWatchForm(props) {
 	const addWatch = props.addWatch;
@@ -16,7 +17,8 @@ function AddWatchForm(props) {
 		evt.preventDefault();
 		addWatch({
 			city: form.city,
-			timeZone: form.timeZone
+			timeZone: form.timeZone,
+			id: nanoid()
 		})
 		setForm({
 			city: '',
