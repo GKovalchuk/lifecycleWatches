@@ -41,4 +41,5 @@ input, form, button {
 	margin: auto;
 
   	text-align: center;
+	word-wrap: break-word;
 }

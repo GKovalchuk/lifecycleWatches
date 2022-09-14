@@ -1,0 +1,120 @@
+.block_of_watches {
+	display: flex;
+	flex-wrap: wrap;
+
+	width: 100%;
+	height: fit-content;
+}
+.watch_item {
+	width: 8rem;
+	height: 12rem;
+}
+.city_name {
+	line-height: 1.4rem;
+	font-size: 1.4rem;
+	margin-right: 1rem;
+}
+.watch_wrapper {
+	position: absolute;
+	width: 8rem;
+}
+.bezel {
+	position: relative;
+
+	width: 7rem;
+	height: 7rem;
+
+	border: 0.2rem black solid;
+	border-radius: 50%;
+}
+
+.hour_hand {
+	position: absolute;
+	content: ' ';
+	top: 50%;
+	left: 50%;
+
+	width: 2.2rem;
+	height: 0.2rem;
+
+	background-color: #000;
+
+	transform: rotate(0deg);
+	transform-origin: left;
+
+	transition: transform .5s linear;
+}
+
+.minute_hand {
+	position: absolute;
+	content: ' ';
+	top: 50%;
+	left: 50%;
+
+	width: 3rem;
+	height: 0.2rem;
+
+	background-color: #000;
+
+	transform: rotate(0deg);
+	transform-origin: left;
+
+	transition: transform .5s linear;
+}
+
+.second_hand {
+	position: absolute;
+	content: ' ';
+	top: 50%;
+	left: 50%;
+
+	width: 3rem;
+	height: 0.1rem;
+
+	background-color: rgb(255, 0, 0);
+
+	transform: rotate(0deg);
+	transform-origin: left;
+
+	/* transition: transform .5s linear; */
+}
+
+.central_circle {
+	position: absolute;
+	content: ' ';
+	top: 50%;
+	left: 50%;
+
+	width: 1rem;
+	height: 1rem;
+	transform: translateY(-50%) translateX(-50%);
+
+
+	border-radius: 50%;
+
+	background-color: #000;
+}
+
+.remove_watch {
+	position: absolute;
+	top: -1rem;
+	right: 0rem;
+
+	width: 1.7rem;
+	height: 1.7rem;
+
+	padding: 0;
+
+	border-radius: 50%;
+}
+
+.remove_watch img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	transform: translate(-50%, -50%);
+
+	width: 1.2rem;
+	height: 1.2rem;
+}
