@@ -43,7 +43,7 @@ function Watch(props) {
 					draw(time, watch)
 					setUpdated(data.currentDate)
 				})
-		}, 500);
+		}, 490);
 	} // запрашиваем данные с сервера и вызываем изменение компонента
 
 
@@ -54,7 +54,7 @@ function Watch(props) {
 
 	useEffect(() => {
 		if (time.exists === true) {
-			timeout = setTimeout(loadData, 1000);
+			timeout = setTimeout(loadData, 490);
 		} else {
 			console.log(time.exists)
 			return () => {
